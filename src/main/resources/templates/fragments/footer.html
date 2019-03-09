@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div th:fragement="footer">
+    <!--FOOTER-->
+    <footer class="l-footer l-footer-1 t-footer-1">
+        <div class="group pt-10 pb-10 ph">
+            <div class="copyright pull-left">
+                &#169 Copyright <a th:text="${#dates.year(#dates.createNow())}"></a>
+                <a href="#">LeraLoro</a>
+                Powered by
+                <a href="#">DHN.</a>
+                All rights reserved.
+            </div>
+            <div class="version pull-right">v 1.0</div>
+        </div>
+    </footer>
+
+</div>
+</body>
+</html>

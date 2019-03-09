@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <title>Fettle Wallet || ....mobile deposits and payments with value-added services</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <!-- ===== FAVICON =====-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- ===== CSS =====-->
+    <!-- General-->
+    <link th:href="@{/css/basic.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/general.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/theme.css}" type="text/css" rel="stylesheet"/>
+    <!-- Specific-->
+    <!--<link rel="stylesheet" href="css/addons/theme/jasny-bootstrap.css" class="style-theme-addon"/>-->
+</head>
+<body>
+
+<!--Main Content-->
+<section class="error-container error-405-container pb-pattern o-lines-light">
+    <div class="error-405">
+        <div class="center-outer">
+            <div class="center-inner">
+                <div class="center-content error-405-content">
+                    <h1 class="font-bold">Fettle <span>Wallet</span></h1>
+
+                    <h5>...mobile deposits and payments with value-added services</h5>
+                    <div class="row col-lg-12 center-block login-form">
+                        <hr>
+                        <a th:href="@{/public/registration}" class="btn btn-lg btn-block btn-dark mr"><i
+                                class="fa fa-users mr-5"></i>Sign Up</a>
+                        <hr>
+                        <a th:href="@{/public/login}" class="btn btn-lg btn-block btn-dark mr"><i
+                                class="fa fa-sign-in mr-5"></i>Login</a>
+                        <hr>
+                        <a th:href="@{/public/deposit/withvoucher}" class="btn btn-lg btn-block btn-dark mr"><i
+                                class="fa fa-money mr-5"></i>Deposit Funds</a>
+                        <hr>
+                        <span sec:authorize="isAuthenticated()">
+                    <a th:href="@{/home}" class="btn btn-lg btn-block btn-dark mr"><i
+                            class="fa fa-home mr-5"></i>Home</a>
+                    <hr>
+                    <a th:href="@{/public/logout}" class="btn btn-lg btn-block btn-dark mr"><i
+                            class="fa fa-sign-out mr-5"></i>Logout</a>
+                    </span>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+<!-- ===== JS =====-->
+
+<!-- ===== JS =====-->
+<!-- jQuery-->
+<script th:src="@{/js/basic/jquery.min.js}"></script>
+<script th:src="@{/js/basic/jquery-migrate.min.js}"></script>
+
+<!-- General-->
+<script th:src="@{/js/basic/modernizr.min.js}"></script>
+<script th:src="@{/js/basic/bootstrap.min.js}"></script>
+<script th:src="@{/js/shared/jquery.asonWidget.js}"></script>
+<script th:src="@{/js/plugins/plugins.js}"></script>
+<script th:src="@{/js/general.js}"></script>
+
+<script th:src="@{/js/calls/page.error.js}"></script>
+<script th:src="@{/js/plugins/errors/jquery.particleground.min.js}"></script>
+
+</html>

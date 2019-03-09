@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+<aside id="sb-left" class="l-sidebar l-sidebar-1 t-sidebar-1" th:fragment="menu">
+    <!--Switcher-->
+    <div class="l-side-box"><a href="#" data-ason-type="sidebar" data-ason-to-sm="sidebar"
+                               data-ason-target="#sb-left"
+                               class="sidebar-switcher switcher t-switcher-side ason-widget"><i
+            class="fa fa-bars"></i></a></div>
+    <div class="l-side-box">
+        <!--Logo-->
+        <div class="widget-logo logo-in-side">
+            <h1><a href="#"><span class="visible-default-inline-block"><img
+                    th:src="@{/img/logo.png}" alt="Fettle"></span><span
+                    class="visible-compact-inline-block"><img th:src="@{/img/logo_medium.png}"
+                                                              alt="Fettle"></span>
+                <span class="visible-collapsed-inline-block"><img th:src="@{/img/logo_small.png}"
+                                                                  alt="Fettle"></span></a></h1>
+        </div>
+    </div>
+    <!--Main Menu-->
+    <div class="l-side-box">
+        <!--MAIN NAVIGATION MENU-->
+        <nav class="navigation">
+
+            <ul data-ason-type="menu" class="ason-widget">
+                <li><a href="/home"><i class="icon fa fa-dashboard"></i><span class="title">Home</span></a></li>
+
+                <li><a href="#"><i class="icon fa fa-medkit"></i><span class="title">Facility</span><span
+                        class="arrow"><i class="fa fa-angle-left"></i></span></a>
+                    <ul>
+                        <li><a href="/home/facility/add"><span class="title">Add Facility</span></a></li>
+
+                    </ul>
+                </li>
+
+
+                <span sec:authorize="isAuthenticated()">
+                <li><a th:href="@{/public/logout}"><i class="icon fa fa-sign-out"></i><span class="title">Logout</span></a>
+              </span>
+            </ul>
+
+        </nav>
+    </div>
+</aside>
+
+</body>
+</html>

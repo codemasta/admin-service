@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Fettle || Home </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <!-- ===== FAVICON =====-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- ===== CSS =====-->
+    <!-- General-->
+    <link th:href="@{/css/basic.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/general.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/theme.css}" type="text/css" rel="stylesheet"/>
+    <style type="text/css">
+        .dataTables_length, .dataTables_paginate, .dataTables_filter, .dataTables_info {
+            display: none;
+        }
+    </style>
+</head>
+<body class="l-dashboard">
+
+<!--SECTION-->
+<section class="l-main-container">
+    <!--Left Sidebar Content-->
+
+    <div th:replace="fragments/menu :: menu"></div>
+
+    <!--Main Content-->
+    <section class="l-container">
+        <!--HEADER-->
+        <div th:replace="fragments/profile :: profile"></div>
+        <!-- Row 1 - Info Widgets-->
+        <div class="l-row l-spaced-horizontal l-spaced-top">
+
+            <!-- Row 2 - Stats, Orders, Social-->
+            <div class="l-row l-spaced-horizontal">
+                <!-- Orders Widget-->
+                <div class="l-col-lg-12 l-col-md-12 l-clear-md l-spaced-bottom">
+                    <div class="widget-latest-orders t-latest-orders-1">
+                        <h4 class="widget-header">Recently Added Facilities</h4>
+                        <table id="dataTableId" cellspacing="0" width="100%" class="display">
+                            <thead>
+                            <tr>
+                                <th>NAME</th>
+                                <th>LATITUDE</th>
+                                <th>LONGITUDE</th>
+                                <th>TYPE</th>
+                                <th>STATE</th>
+                                <th>ADDED ON</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <th:block th:each="facility : ${facilities}">
+                                <tr>
+                                    <td th:text="${facility.name}"></td>
+                                    <td th:text="${facility.latitude}"></td>
+                                    <td th:text="${facility.longitude}"></td>
+                                    <td th:text="${facility.type}"></td>
+                                    <td th:text="${facility.state}"></td>
+                                    <td th:text="${facility.createdOn}"></td>
+
+                                </tr>
+
+                            </th:block>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!--FOOTER-->
+        <div th:replace="fragments/footer :: footer"></div>
+    </section>
+
+</section>
+
+<!-- ===== JS =====-->
+<!-- jQuery-->
+<script th:src="@{/js/basic/jquery.min.js}"></script>
+<script th:src="@{/js/basic/jquery-migrate.min.js}"></script>
+<script th:src="@{/js/shared/jquery-ui.min.js}"></script>
+<script th:src="@{/js/shared/jquery.ui.touch-punch.min.js}"></script>
+<!-- General-->
+<script th:src="@{/js/basic/modernizr.min.js}"></script>
+<script th:src="@{/js/basic/bootstrap.min.js}"></script>
+<script th:src="@{/js/shared/jquery.asonWidget.js}"></script>
+<script th:src="@{/js/plugins/plugins.js}"></script>
+<script th:src="@{/js/general.js}"></script>
+
+<script th:src="@{/js/plugins/pageprogressbar/pace.min.js}"></script>
+<!-- Specific-->
+<script th:src="@{/js/shared/classie.js}"></script>
+<script th:src="@{/js/shared/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/js/plugins/charts/c3/c3.min.js}"></script>
+<script th:src="@{/js/plugins/charts/c3/d3.v3.min.js}"></script>
+<script th:src="@{/js/plugins/charts/other/jquery.sparkline.min.js}"></script>
+<script th:src="@{/js/plugins/forms/elements/jquery.bootstrap-touchspin.min.js}"></script>
+<script th:src="@{/js/plugins/forms/elements/jquery.checkBo.min.js}"></script>
+<script th:src="@{/js/plugins/forms/elements/jquery.switchery.min.js}"></script>
+<script th:src="@{/js/plugins/tooltip/jquery.tooltipster.min.js}"></script>
+<!--<script th:src="@{/js/calls/dashboard.2.js}"></script>-->
+<script th:src="@{/js/calls/part.header.1.js}"></script>
+<script th:src="@{/js/calls/part.sidebar.2.js}"></script>
+<script th:src="@{/js/calls/part.theme.setting.js}"></script>
+<script th:src="@{/js/calls/table.data.js}"></script>
+<script th:src="@{/js/plugins/table/jquery.dataTables.min.js}"></script>
+<script th:src="@{/js/shared/raphael.min.js}"></script>
+<script th:src="@{/js/plugins/charts/morris/morris.min.js}"></script>
+
+</body>
+</html>

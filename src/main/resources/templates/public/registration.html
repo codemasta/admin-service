@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fettle || Register User</title>
+
+    <!-- General -->
+    <link th:href="@{/css/basic.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/general.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/theme.css}" type="text/css" rel="stylesheet"/>
+
+    <!-- Favicon -->
+    <link type="image/x-icon" href="favicon.png" rel="shortcut icon"/>
+
+    <!-- google font libraries -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Titillium+Web:200,300,400' rel='stylesheet'
+          type='text/css'>
+
+
+    <!-- Favicon -->
+    <!--<link type="image/x-icon" href="favicon.png" rel="shortcut icon"/>-->
+
+</head>
+<body class="login-bg">
+
+<!--SECTION-->
+<section class="l-main-container">
+    <!--Main Content-->
+    <div class="login-wrapper register-wrapper">
+        <div class="login-container">
+            <!--Logo-->
+            <h1 class="login-logo"><img th:src="@{/img/logo.png}" alt="Fettle"></h1>
+            <!--Login Form-->
+            <div th:if="${success}">
+                <div class="alert alert-success">
+                    <span th:utext="${success}"></span>
+                </div>
+            </div>
+            <div th:if="${error}">
+                <div class="alert alert-danger">
+                    <span th:utext="${error}"></span>
+                </div>
+            </div>
+            <form autocomplete="off" id="registerForm" role="form" th:action="@{/public/registration}"
+                  th:object="${user}" method="post" class="login-form">
+                <div class="form-group">
+                    <label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+                           class="validation-message"></label>
+                    <input id="firstname" type="text" th:field="*{firstName}" placeholder="First Name"
+                           required="required" pattern="[a-zA-Z]{3,}" title="Alphabets only of length three or more"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <label th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                           class="validation-message"></label>
+                    <input id="lastname" type="text" th:field="*{lastName}" placeholder="Last Name"
+                           required="required" pattern="[a-zA-Z]{3,}" title="Alphabets only of length three or more"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+                    <label th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                           class="validation-message"></label>
+                    <input id="phonenumber" type="email" th:field="*{username}" placeholder="Email Address"
+                           class="form-control">
+                </div>
+                <div class="form-group">
+
+                    <select id="basicSelect" class="form-control" th:field="*{role}">
+                        <div th:each="role: ${roles}">
+                            <option th:value="${role.id}"><span th:text="${role.role}"></span></option>
+                        </div>
+
+                    </select>
+
+                </div>
+
+                <button type="submit" class="btn btn-dark btn-block btn-login">Sign Up</button>
+
+                <div class="login-social">
+                    <div class="l-span-md-12">
+                        <div class="tor"><span>- OR -</span></div>
+                    </div>
+                    <div class="l-span-md-12 register-sign-in">
+                        <a th:href="@{/public/login}" class="btn btn-primary btn-block btn-login-register">Sign In</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- ===== JS =====-->
+<!-- jQuery-->
+<script th:src="@{/js/basic/jquery.min.js}"></script>
+<script th:src="@{/js/basic/jquery-migrate.min.js}"></script>
+
+<!-- General-->
+<script th:src="@{/js/basic/modernizr.min.js}"></script>
+<script th:src="@{/js/basic/bootstrap.min.js}"></script>
+<script th:src="@{/js/shared/jquery.asonWidget.js}"></script>
+<script th:src="@{/js/plugins/plugins.js}"></script>
+<script th:src="@{/js/general.js}"></script>
+
+<!-- Semi general-->
+<script th:src="@{/js/plugins/pageprogressbar/pace.min.js}"></script>
+<!-- Specific-->
+<script th:src="@{/js/plugins/forms/elements/jquery.checkradios.min.js}"></script>
+<script th:src="@{/js/plugins/forms/validation/jquery.validate.min.js}"></script>
+<script th:src="@{/js/plugins/forms/validation/jquery.validate.additional.min.js}"></script>
+<script th:src="@{/js/calls/page.register.js}"></script>
+
+</body>
+
+</html>

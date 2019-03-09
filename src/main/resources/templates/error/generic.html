@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Fettle || Error</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <!-- ===== FAVICON =====-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- ===== CSS =====-->
+    <!-- General-->
+    <link th:href="@{/css/basic.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/general.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/theme.css}" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<!--Main Content-->
+<section class="error-container error-405-container pb-pattern o-lines-light">
+    <div class="error-405">
+        <div class="center-outer">
+            <div class="center-inner">
+                <div class="center-content error-405-content">
+                    <h1 class="font-bold">Error <span></span></h1>
+                    <hr>
+                    <div class="info">
+                        <p>Something went wrong with the page request.</p>
+                        <p>Don't panic, you can always go back.</p>
+                    </div>
+                    <a th:href="@{/home}" class="btn btn-lg btn-primary mr">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ===== JS =====-->
+<!--jQuery-->
+<script th:src="@{/js/basic/jquery.min.js}"></script>
+<script th:src="@{/js/basic/jquery-migrate.min.js}"></script>
+
+<!-- General-->
+<script th:src="@{/js/basic/modernizr.min.js}"></script>
+<script th:src="@{/js/basic/bootstrap.min.js}"></script>
+<script th:src="@{/js/shared/jquery.asonWidget.js}"></script>
+<script th:src="@{/js/plugins/plugins.js}"></script>
+<script th:src="@{/js/general.js}"></script>
+</body>
+
+</html>
