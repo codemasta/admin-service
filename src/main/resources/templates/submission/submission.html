@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Fettle || SUBMIT FACILITY</title>
+    <title>LeraLoro || SUBMIT FACILITY</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,13 +22,13 @@
 <!--SECTION-->
 <section class="l-main-container">
     <!--Left Sidebar Content-->
-    <div th:replace="fragments/menu :: menu"></div>
+    <!--<div th:replace="fragments/menu :: menu"></div>-->
     <!--Main Content-->
     <section class="l-container">
         <!--HEADER-->
         <div th:replace="fragments/profile :: profile"></div>
         <div class="l-page-header">
-            <h2 class="l-page-title">NEW <span> FACILITY</span></h2>
+            <h2 class="l-page-title">SUBMIT NEW <span> FACILITY</span></h2>
 
         </div>
         <div class="l-spaced">
@@ -156,7 +156,7 @@
                             <label th:if="${#fields.hasErrors('services')}" th:errors="*{services}"
                                    class="validation-message"></label>
                             <label class="col-sm-3 control-label" for="services">LIST OF SERVICES:</label>
-                            <div class="col-sm-5"><textarea class="form-control" id="services" th:field="*{services}" placeholder="Services offered separated by comma"
+                            <div class="col-sm-5"><textarea class="form-control" id="services" th:field="*{services}" placeholder="services offered separated by comma"
                                                             type="text"></textarea>
                             </div>
                         </div>
