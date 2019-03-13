@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fettle || SUBMIT FACILITY</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <!-- ===== FAVICON =====-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- ===== CSS =====-->
+    <!-- General-->
+    <!-- General -->
+    <link th:href="@{/css/basic.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/general.css}" type="text/css" rel="stylesheet"/>
+    <link th:href="@{/css/theme.css}" type="text/css" rel="stylesheet"/>
+    <!-- Specific-->
+    <link th:href="@{/css/addons/theme/select2.css}" type="text/css" rel="stylesheet" class="style-theme-addon"/>
+</head>
+<body>
+
+<!--SECTION-->
+<section class="l-main-container">
+    <!--Left Sidebar Content-->
+    <div th:replace="fragments/menu :: menu"></div>
+    <!--Main Content-->
+    <section class="l-container">
+        <!--HEADER-->
+        <div th:replace="fragments/profile :: profile"></div>
+        <div class="l-page-header">
+            <h2 class="l-page-title">NEW <span> FACILITY</span></h2>
+
+        </div>
+        <div class="l-spaced">
+            <!--Basic Elements-->
+            <div class="l-box l-spaced-bottom">
+                <div class="l-box-header">
+                    <h2 class="l-box-title"><span>Facility</span> Details</h2>
+
+                </div>
+                <div class="l-box-body l-spaced">
+                    <div th:if="${success}">
+                        <div class="alert alert-success">
+                            <span th:utext="${success}"></span>
+                        </div>
+                    </div>
+                    <div th:if="${error}">
+                        <div class="alert alert-danger">
+                            <span th:utext="${error}"></span>
+                        </div>
+                    </div>
+
+                    <form role="form" th:action="@{/submit/facility/add}" th:object="${submission}" method="POST"
+                          class="form-horizontal">
+                        <h4 class="sep-bottom">General</h4>
+                        <div class="form-group">
+                            <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                                   class="validation-message"></label>
+                            <label class="col-sm-3 control-label" for="name"> NAME:</label>
+                            <div class="col-sm-5">
+                                <input class="form-control" id="name" th:field="*{name}"
+                                       type="text" placeholder="Name of the Facility"
+                                       required="required" title="Alphabets only of length three or more"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}"
+                                   class="validation-message"></label>
+                            <label class="col-sm-3 control-label" for="longitude"> LONGITUDE:</label>
+                            <div class="col-sm-5">
+                                <input class="form-control" id="longitude" th:field="*{longitude}"
+                                       type="text" placeholder="Longitude of the Facility Geo-Coordinates"
+                                       required="required" title="Numbers and point only"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label th:if="${#fields.hasErrors('latitude')}" th:errors="*{latitude}"
+                                   class="validation-message"></label>
+                            <label class="col-sm-3 control-label" for="name"> LATITUDE:</label>
+                            <div class="col-sm-5">
+                                <input class="form-control" id="latitude" th:field="*{latitude}"
+                                       type="text" placeholder="Latitude of the Facility Geo-Coordinates"
+                                       required="required" title="Numbers and point only"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">TYPE:</label>
+                            <div class="col-sm-5">
+                                <select id="selectType" class="form-control" th:field="*{type}">
+                                    <option th:value="primary"> PRIMARY</option>
+                                    <option th:value="secondary"> SECONDARY</option>
+                                    <option th:value="tertiary"> TERTIARY</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">OWNERSHIP:</label>
+                            <div class="col-sm-5">
+                                <select id="selectOwner" class="form-control" th:field="*{ownership}">
+                                    <option th:value="private"> PRIVATE</option>
+                                    <option th:value="public"> PUBLIC</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">FUNCTIONAL:</label>
+                            <div class="col-sm-5">
+                                <select id="selectFunctional" class="form-control" th:field="*{functional}">
+                                    <option th:value="functional"> FUNCTIONAL</option>
+                                    <option th:value="non-functional"> NON-FUNCTIONAL</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h4 class="sep-bottom">CONTACT DETAILS</h4>
+
+
+                        <div class="form-group">
+                            <label th:if="${#fields.hasErrors('state')}" th:errors="*{state}"
+                                   class="validation-message"></label>
+                            <label class="col-sm-3 control-label" for="state">STATE:</label>
+                            <div class="col-sm-5">
+                                <input class="form-control" id="state" th:field="*{state}" type="text"
+                                       required="required">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label th:if="${#fields.hasErrors('lga')}" th:errors="*{lga}"
+                                   class="validation-message"></label>
+                            <label class="col-sm-3 control-label" for="lga">LGA:</label>
+                            <div class="col-sm-5">
+                                <input class="form-control" id="lga" th:field="*{lga}" type="text" required="required">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label th:if="${#fields.hasErrors('ward')}" th:errors="*{ward}"
+                                   class="validation-message"></label>
+                            <label class="col-sm-3 control-label" for="ward">WARD:</label>
+                            <div class="col-sm-5"><input class="form-control" id="ward" th:field="*{ward}" type="text"
+                                                         required="required">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label th:if="${#fields.hasErrors('services')}" th:errors="*{services}"
+                                   class="validation-message"></label>
+                            <label class="col-sm-3 control-label" for="services">LIST OF SERVICES:</label>
+                            <div class="col-sm-5"><textarea class="form-control" id="services" th:field="*{services}" placeholder="Services offered separated by comma"
+                                                            type="text"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                   class="validation-message"></label>
+                            <label class="col-sm-3 control-label" for="email">YOUR EMAIL :</label>
+                            <div class="col-sm-5"><input class="form-control" id="email" th:field="*{email}" type="email" placeholder="Email address of the submitter"
+                                                         required="required">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-9">
+
+                                <button type="submit" class="btn btn-dark">SUBMIT</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <!--FOOTER-->
+        <div th:replace="fragments/footer :: footer"></div>
+    </section>
+
+</section>
+<!-- ===== JS =====-->
+
+<!-- jQuery-->
+<script th:src="@{/js/basic/jquery.min.js}"></script>
+<script th:src="@{/js/basic/jquery-migrate.min.js}"></script>
+
+<!-- General-->
+<script th:src="@{/js/basic/modernizr.min.js}"></script>
+<script th:src="@{/js/basic/bootstrap.min.js}"></script>
+<script th:src="@{/js/shared/jquery.asonWidget.js}"></script>
+<script th:src="@{/js/plugins/plugins.js}"></script>
+<script th:src="@{/js/general.js}"></script>
+
+<!-- Semi general-->
+<script th:src="@{/js/plugins/pageprogressbar/pace.min.js}"></script>
+<!-- Specific-->
+<script th:src="@{/js/shared/classie.js}"></script>
+<script th:src="@{/js/shared/perfect-scrollbar.min.js}"></script>
+<script th:src="@{/js/plugins/charts/other/jquery.sparkline.min.js}"></script>
+<script th:src="@{/js/plugins/forms/elements/jquery.bootstrap-touchspin.min.js}"></script>
+<script th:src="@{/js/plugins/forms/elements/jquery.checkBo.min.js}"></script>
+<script th:src="@{/js/plugins/forms/elements/jquery.switchery.min.js}"></script>
+<script th:src="@{/js/plugins/tooltip/jquery.tooltipster.min.js}"></script>
+<script th:src="@{/js/shared/moment.min.js}"></script>
+<script th:src="@{/js/calls/part.header.1.js}"></script>
+
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 package io.leraloro.mainservice.model;
 
 import io.leraloro.mainservice.Listeners.FacilityListener;
+import io.leraloro.mainservice.Listeners.SubmissionListener;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,32 +17,27 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@EntityListeners(FacilityListener.class)
-@Table(name = "facility")
-public class Facility implements Serializable {
+@EntityListeners(SubmissionListener.class)
+@Table(name = "submission")
+public class Submission {
 
     @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     double longitude;
 
     double latitude;
 
-    String wardCode;
+    String email;
 
     String services;
 
-    String stateCode;
-
-    String lgaCode;
+    String state;
 
     String name;
 
     String type;
-
-    String state;
 
     String ward;
 
@@ -52,6 +48,5 @@ public class Facility implements Serializable {
     String functional;
 
     Date createdOn;
-
 
 }
