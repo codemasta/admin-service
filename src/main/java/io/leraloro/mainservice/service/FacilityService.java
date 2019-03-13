@@ -19,7 +19,6 @@ public class FacilityService {
     @Autowired
     public FacilityService(FacilityRepository facilityRepository) {
         this.facilityRepository = facilityRepository;
-
     }
 
     public Facility saveFacility(Facility facility) {
