@@ -1,8 +1,6 @@
 package io.leraloro.mainservice.service;
 
-import io.leraloro.mainservice.model.Facility;
 import io.leraloro.mainservice.model.Submission;
-import io.leraloro.mainservice.repository.FacilityRepository;
 import io.leraloro.mainservice.repository.SubmissionRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +21,7 @@ public class SubmissionService {
 
     public Submission saveSubmission(Submission submission) {
         submission.setCreatedOn(new Date());
+        logger.info("Saving db object: {}", submission);
         return submissionRepository.save(submission);
     }
 }

@@ -20,6 +20,8 @@ public class FacilityListener {
 
     private static Queue facilityQueue;
 
+    /**
+     * manually injection of the required beans because does its instantiation before spring */
     @Autowired
     public void init(RabbitTemplate rabbitTemplate, Queue facilityQueue) {
         FacilityListener.facilityQueue = facilityQueue;
@@ -27,10 +29,13 @@ public class FacilityListener {
 
     }
 
+    /**
+     * sends a facility created message to the queue for the search index
+     * works as a post persist listener to the storage directly */
     @PostPersist
     public void sendMessage(Facility facility) {
-        QueueUtils facilitySerialize = new QueueUtils<Facility>();
+        QueueUtils payloadSerialize = new QueueUtils<Facility>();
         rabbitTemplate.convertAndSend(
-                facilityQueue.getName(), facilitySerialize.serializeToJson(facility, logger));
+                facilityQueue.getName(), payloadSerialize.serializeToJson(facility, logger));
     }
 }

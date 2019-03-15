@@ -1,15 +1,13 @@
 package io.leraloro.mainservice.model;
 
+import io.leraloro.mainservice.Listeners.SubmissionListener;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -17,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-//@EntityListeners(SubmissionListener.class)
+@EntityListeners(SubmissionListener.class)
 @Table(name = "submission")
 public class Submission {
 
@@ -47,6 +45,8 @@ public class Submission {
     String ownership;
 
     String functional;
+
+    String address;
 
     Date createdOn;
 

@@ -12,9 +12,9 @@ public class QueueConfig {
         return new Queue("facilities.queue");
     }
 
-    @Bean("accountCreated")
-    public Queue adminAccountCreatedQueue() {
-        return new Queue("admin.account.created");
+    @Bean("email.notification")
+    public Queue emailNotificationQueue() {
+        return new Queue("send.email.notification");
     }
 
 }
