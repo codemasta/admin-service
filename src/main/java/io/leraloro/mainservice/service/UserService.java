@@ -1,6 +1,6 @@
 package io.leraloro.mainservice.service;
 
-import io.leraloro.mainservice.model.AdminEmail;
+import io.leraloro.mainservice.model.EmailMessage;
 import io.leraloro.mainservice.model.Role;
 import io.leraloro.mainservice.model.User;
 import io.leraloro.mainservice.repository.RoleRepository;
@@ -31,19 +31,19 @@ public class UserService {
 
 
     private RabbitTemplate rabbitTemplate;
-    private Queue accountCreatedQueue;
+    private Queue emailNotification;
 
     @Autowired
     public UserService(UserRepository userRepository,
                        RoleRepository roleRepository,
                        BCryptPasswordEncoder bCryptPasswordEncoder,
-                       @Qualifier("accountCreated") Queue accountCreatedQueue,
+                       @Qualifier("email.notification") Queue emailNotification,
                        RabbitTemplate rabbitTemplate) {
 
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.accountCreatedQueue = accountCreatedQueue;
+        this.emailNotification = emailNotification;
         this.rabbitTemplate = rabbitTemplate;
     }
 
@@ -64,7 +64,7 @@ public class UserService {
         Optional<Role> userRole = roleRepository.findById(user.getRole());
         user.setRoles(new HashSet<>(Arrays.asList(userRole.get())));
 
-        sendUserAccountEmailMessage(AdminEmail.builder()
+        sendUserAccountEmailMessage(EmailMessage.builder()
                 .receiver(user.getUsername())
                 .subject("Account Creation.")
                 .message("Your account have been successfully created with the password: " + defaultPassword)
@@ -73,10 +73,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public void sendUserAccountEmailMessage(AdminEmail message) {
-        QueueUtils adminEmail = new QueueUtils<AdminEmail>();
+    public void sendUserAccountEmailMessage(EmailMessage message) {
+        QueueUtils adminEmail = new QueueUtils<EmailMessage>();
         rabbitTemplate.convertAndSend(
-                accountCreatedQueue.getName(), adminEmail.serializeToJson(message, logger));
+                emailNotification.getName(), adminEmail.serializeToJson(message, logger));
     }
 
 }
