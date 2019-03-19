@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>LeraLoro || Home </title>
+    <title>Leraloro || Already Indexed Facilities </title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,11 +14,7 @@
     <link th:href="@{/css/basic.css}" type="text/css" rel="stylesheet"/>
     <link th:href="@{/css/general.css}" type="text/css" rel="stylesheet"/>
     <link th:href="@{/css/theme.css}" type="text/css" rel="stylesheet"/>
-    <style type="text/css">
-        .dataTables_length, .dataTables_paginate, .dataTables_filter, .dataTables_info {
-            display: none;
-        }
-    </style>
+
 </head>
 <body class="l-dashboard">
 
@@ -40,7 +36,7 @@
                 <!-- Orders Widget-->
                 <div class="l-col-lg-12 l-col-md-12 l-clear-md l-spaced-bottom">
                     <div class="widget-latest-orders t-latest-orders-1">
-                        <h4 class="widget-header">Already Indexed Facilities</h4>
+                        <h4 class="widget-header">Already Indexed Facilities.</h4>
                         <table id="dataTableId" cellspacing="0" width="100%" class="display">
                             <thead>
                             <tr>
@@ -50,6 +46,7 @@
                                 <th>TYPE</th>
                                 <th>STATE</th>
                                 <th>ADDED ON</th>
+                                <th>ACTION</th>
                             </tr>
                             </thead>
 
@@ -62,6 +59,8 @@
                                     <td th:text="${facility.type}"></td>
                                     <td th:text="${facility.state}"></td>
                                     <td th:text="${facility.createdOn}"></td>
+                                    <td> <a href="#"><btn class="btn btn-danger">DELETE</btn></a> <span style="padding: 1px;"></span> <a href="#"><btn class="btn btn-success">UPDATE</btn></a> </td>
+
 
                                 </tr>
 

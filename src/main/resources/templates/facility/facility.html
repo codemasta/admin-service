@@ -59,8 +59,8 @@
                             <label class="col-sm-3 control-label" for="name"> NAME:</label>
                             <div class="col-sm-5">
                                 <input class="form-control" id="name" th:field="*{name}"
-                                       type="text"
-                                       required="required" title="Alphabets only of length three or more"/>
+                                       type="text" placeholder="Name of the Facility"  pattern="[a-zA-Z][a-zA-Z ]{4,}"
+                                       required="required" title="Characters and spaces only."/>
                             </div>
                         </div>
 
@@ -70,7 +70,8 @@
                             <label class="col-sm-3 control-label" for="longitude"> LONGITUDE:</label>
                             <div class="col-sm-5">
                                 <input class="form-control" id="longitude" th:field="*{longitude}"
-                                       type="text"
+                                       pattern="-?\d{1,3}\.\d+"
+                                       type="text" placeholder="Longitude of the Facility Geo-Coordinates"
                                        required="required" title="Numbers and point only"/>
                             </div>
                         </div>
@@ -81,7 +82,8 @@
                             <label class="col-sm-3 control-label" for="name"> LATITUDE:</label>
                             <div class="col-sm-5">
                                 <input class="form-control" id="latitude" th:field="*{latitude}"
-                                       type="text"
+                                       pattern="-?\d{1,3}\.\d+"
+                                       type="text" placeholder="Longitude of the Facility Geo-Coordinates"
                                        required="required" title="Numbers and point only"/>
                             </div>
                         </div>
@@ -125,8 +127,9 @@
                                    class="validation-message"></label>
                             <label class="col-sm-3 control-label" for="state">STATE:</label>
                             <div class="col-sm-5">
-                                <input class="form-control" id="state" th:field="*{state}" type="text"
-                                       required="required">
+                                <input class="form-control" id="state" th:field="*{state}"
+                                       type="text" pattern="[A-Za-z]{3,15}"
+                                       required="required" title="Alphabets representing state name only.">
                             </div>
                         </div>
 
@@ -135,8 +138,7 @@
                                    class="validation-message"></label>
                             <label class="col-sm-3 control-label" for="state_code">STATE CODE:</label>
                             <div class="col-sm-5">
-                                <input class="form-control" id="state_code" th:field="*{stateCode}" type="text"
-                                       required="required">
+                                <input class="form-control" id="state_code" th:field="*{stateCode}" type="text">
                             </div>
                         </div>
 
@@ -145,7 +147,9 @@
                                    class="validation-message"></label>
                             <label class="col-sm-3 control-label" for="lga">LGA:</label>
                             <div class="col-sm-5">
-                                <input class="form-control" id="lga" th:field="*{lga}" type="text" required="required">
+                                <input class="form-control" id="lga" th:field="*{lga}"  pattern="[a-zA-Z][a-zA-Z ]{4,}"
+                                       title="Alphabets representing local government area name only."
+                                       type="text" required="required">
                             </div>
                         </div>
 
@@ -163,7 +167,9 @@
                             <label th:if="${#fields.hasErrors('ward')}" th:errors="*{ward}"
                                    class="validation-message"></label>
                             <label class="col-sm-3 control-label" for="ward">WARD:</label>
-                            <div class="col-sm-5"><input class="form-control" id="ward" th:field="*{ward}" type="text"
+                            <div class="col-sm-5"><input class="form-control" id="ward" th:field="*{ward}"
+                                                         type="text" pattern="[a-zA-Z][a-zA-Z ]{4,}"
+                                                         title="Alphabets representing Ward area name only."
                                                          required="required">
                             </div>
                         </div>
@@ -174,6 +180,28 @@
                             <label class="col-sm-3 control-label" for="wardCode">WARD CODE:</label>
                             <div class="col-sm-5"><input class="form-control" id="wardCode" th:field="*{wardCode}"
                                                          type="text" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label th:if="${#fields.hasErrors('services')}" th:errors="*{services}"
+                                   class="validation-message"></label>
+                            <label class="col-sm-3 control-label" for="services">LIST OF SERVICES:</label>
+                            <div class="col-sm-5"><textarea class="form-control" id="services" th:field="*{services}"
+                                                            placeholder="services offered separated by comma"
+                                                            type="text"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label th:if="${#fields.hasErrors('address')}" th:errors="*{address}"
+                                   class="validation-message"></label>
+                            <label class="col-sm-3 control-label" for="services">FACILITY ADDRESS:</label>
+                            <div class="col-sm-5"><textarea class="form-control" id="address" th:field="*{address}"
+                                                            required="required"
+                                                            placeholder="Descriptive address of the facility"
+                                                            pattern="[a-zA-Z][a-zA-Z ]{4,}"
+                                                            title="Alphabets representing descriptive address only."
+                                                            type="text"></textarea>
                             </div>
                         </div>
 
